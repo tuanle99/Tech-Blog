@@ -1,0 +1,64 @@
+.mainBackground {
+  background-color: #231010;
+}
+.mainText {
+  color: #d9ead3;
+}
+.secondaryBackground {
+  background-color: #d9ead3;
+}
+.secondaryText {
+  color: #231010;
+}
+.navText {
+  color: #d9ead3;
+  font-size: x-large;
+}
+.title {
+  background-color: #d9ead3;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+.titleText {
+  color: #231010;
+}
+.floatRight {
+  float: right;
+  position: relative;
+}
+.paddingContent {
+  padding: 5px;
+}
+.marginContent {
+  margin: 20px;
+}
+.borderContent {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #231010;
+}
+.loginContainer {
+  width: 80%;
+  align-items: center;
+  margin: auto;
+  border: 5px solid #231010;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.textLeft {
+  text-align: left;
+}
+.signinBtn {
+  background-color: #231010;
+  color: #d9ead3;
+  width: 100%;
+}
+.signupBtn {
+  padding: 10px;
+}
+.center {
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "content": "comment 1",
+        "date": "01/01/2021",
+        "user_id": 1,
+        "blog_id": 1
+    }
+]

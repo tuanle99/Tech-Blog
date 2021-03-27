@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Tech Blog</title>
+</head>
+
+<body>
+    <nav class="container mainBackground">
+        <ul class="nav ">
+            <li class="nav-item">
+                <a class="nav-link active navText" href="/">Home</a>
+            </li>
+            {{#if logged_in}}
+            <li class="nav-item">
+                <a class="nav-link navText" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navText" href="" id="logout">Sign Out</a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+                <a class="nav-link navText" href="/login">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navText" href="/signup">Sign Up</a>
+            </li>
+            {{/if}}
+        </ul>
+        <div class="title">
+            <h1 class="titleText">The Tech Blog</h1>
+        </div>
+    </nav>
+    <main class="container secondaryBackground paddingContent">
+        {{{body}}}
+    </main>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>;
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{{#each blogs as |blog| }}
+<div class="marginContent borderContent">
+    <div class="mainBackground mainText paddingContent">
+        <div class="row">
+            <div class="col-6">
+                <p>{{blog.title}}</p>
+            </div>
+            <div class="col-6">
+                <div class="floatRight">
+                    <p>Posted by {{blog.user.name}} on {{format_date blog.date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="secondaryText secondaryBackground paddingContent">
+            <p>{{blog.content}}</p>
+        </div>
+    </div>
+</div>
+{{/each}}
