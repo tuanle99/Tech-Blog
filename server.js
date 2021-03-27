@@ -22,6 +22,14 @@ const hbs = exphbs.create({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
+hbs.handlebars.registerHelper("if_eq", function (a, b, opts) {
+  if (a == b) {
+    return opts.fn(this);
+  } else {
+    return opts.inverse(this);
+  }
+});
+
 const sess = {
   secret: "Super secret secret",
   cookie: {},

@@ -9,6 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <title>Tech Blog</title>
+
 </head>
 
 <body>
@@ -35,6 +36,9 @@
         </ul>
         <div class="title">
             <h1 class="titleText">The Tech Blog</h1>
+            {{#if logged_in}}
+            <p>User: {{current_user.name}}</p>
+            {{/if}}
         </div>
     </nav>
     <main class="container secondaryBackground paddingContent">

@@ -14,9 +14,19 @@ router.get("/", async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
+    let user;
+    if (req.session.logged_in) {
+      user = await User.findOne({
+        where: {
+          id: req.session.user_id,
+        },
+      });
+    }
+
     res.render("homepage", {
       blogs,
       logged_in: req.session.logged_in,
+      current_user: user,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -37,9 +47,19 @@ router.get("/dashboard", async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
+    let user;
+    if (req.session.logged_in) {
+      user = await User.findOne({
+        where: {
+          id: req.session.user_id,
+        },
+      });
+    }
+
     res.render("dashboard", {
       blogs,
       logged_in: req.session.logged_in,
+      current_user: user,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -47,23 +67,42 @@ router.get("/dashboard", async (req, res) => {
 });
 
 router.get("/createBlog", async (req, res) => {
+  let user;
+  if (req.session.logged_in) {
+    user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+  }
   res.render("createBlog", {
     logged_in: req.session.logged_in,
+    current_user: user,
   });
 });
 
 router.get("/addcomment", async (req, res) => {
+  let user;
+  if (req.session.logged_in) {
+    user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+  }
   res.render("addcomment", {
     logged_in: req.session.logged_in,
+    current_user: user,
   });
 });
 
 router.get("/comment/:id", async (req, res) => {
-  req.session.save(() => {
+  req.session.reload(() => {
     req.session.blog_id = req.params.id;
   });
+
   const blog = await Blog.findByPk(req.params.id, {
-    include: [{ model: User, attributes: ["name"] }],
+    include: [{ model: User, attributes: ["name", "id"] }],
   });
   const comments = await Comment.findAll({
     include: [
@@ -73,10 +112,20 @@ router.get("/comment/:id", async (req, res) => {
     ],
     where: { blog_id: blog.id },
   });
+  let user;
+  if (req.session.logged_in) {
+    user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+  }
+
   res.render("comment", {
     comments,
     blog,
     logged_in: req.session.logged_in,
+    current_user: user,
   });
 });
 

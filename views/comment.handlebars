@@ -12,7 +12,18 @@
         <p class="commentStyle">{{comment.content}}</p>
     </div>
     {{/each}}
+    {{#if logged_in}}
     <a href="/addcomment">
         <button type="submit" class="btn signinBtn commentBtn">Add Comment</button>
     </a>
+    {{/if}}
+    {{#if_eq current_user blog.user.id}}
+    <form class="form deleteBlog-form">
+        <button type="submit" id="deleteBlogBtn" class="btn signinBtn commentBtn" value="{{blog.id}}">Delete
+            Blog</button>
+    </form>
+    {{/if_eq}}
 </div>
+{{#if_eq current_user blog.user.id}}
+<script src="../js/deleteBlog.js"></script>
+{{/if_eq}}
