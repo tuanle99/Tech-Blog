@@ -15,7 +15,6 @@ router.post("/create", async (req, res) => {
 });
 
 router.post("/delete", async (req, res) => {
-  console.log(req.body.blog_id);
   try {
     const del = await Blog.destroy({
       where: { id: req.body.blog_id },
