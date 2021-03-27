@@ -41,4 +41,24 @@ router.post("/createComment", async (req, res) => {
   }
 });
 
+router.post("/update", async (req, res) => {
+  try {
+    const updateBlog = await Blog.update(
+      {
+        content: req.body.content,
+        date: req.body.date,
+      },
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    );
+    res.redirect("/dashboard");
+    res.status(200).status(updateBlog);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

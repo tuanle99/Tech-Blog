@@ -2,8 +2,18 @@
     <div class="commentTitle space_between">
         <h4 class="inline">{{blog.title}}</h4>
         <p class="inline">Posted by {{blog.user.name}} at {{format_date blog.date}}</p>
-
     </div>
+    <form class="form updateBlog-form">
+        <div class="input-group mb-3">
+            {{#if_eq current_user.id blog.user.id}}
+            <input type="text" class="form-control" value="{{blog.content}}" id="updateContent">
+            <button type="submit" class="btn signinBtn commentBtn" value="{{blog.id}}" id="updateBlogBtn">Update
+                Blog Content</button>
+            {{else}}
+            <p>{{blog.content}}</p>
+            {{/if_eq}}
+        </div>
+    </form>
     {{#each comments as |comment|}}
     <div class="commentBorder">
         <div class="commentTitle textRight">
