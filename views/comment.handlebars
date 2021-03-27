@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="commentTitle space_between">
+        <h4 class="inline">{{blog.title}}</h4>
+        <p class="inline">Posted by {{blog.user.name}} at {{format_date blog.date}}</p>
+
+    </div>
+    {{#each comments as |comment|}}
+    <div class="commentBorder">
+        <div class="commentTitle textRight">
+            <p class="inline">Posted by {{comment.user.name}} at {{format_date comment.date}}</p>
+        </div>
+        <p class="commentStyle">{{comment.content}}</p>
+    </div>
+    {{/each}}
+    <a href="/addcomment">
+        <button type="submit" class="btn signinBtn commentBtn">Add Comment</button>
+    </a>
+</div>

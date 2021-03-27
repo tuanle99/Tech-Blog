@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Blog, User } = require("../models");
+const { Blog, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -48,6 +48,34 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/createBlog", async (req, res) => {
   res.render("createBlog", {
+    logged_in: req.session.logged_in,
+  });
+});
+
+router.get("/addcomment", async (req, res) => {
+  res.render("addcomment", {
+    logged_in: req.session.logged_in,
+  });
+});
+
+router.get("/comment/:id", async (req, res) => {
+  req.session.save(() => {
+    req.session.blog_id = req.params.id;
+  });
+  const blog = await Blog.findByPk(req.params.id, {
+    include: [{ model: User, attributes: ["name"] }],
+  });
+  const comments = await Comment.findAll({
+    include: [
+      {
+        model: User,
+      },
+    ],
+    where: { blog_id: blog.id },
+  });
+  res.render("comment", {
+    comments,
+    blog,
     logged_in: req.session.logged_in,
   });
 });

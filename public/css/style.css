@@ -1,3 +1,7 @@
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
 .mainBackground {
   background-color: #231010;
 }
@@ -61,4 +65,30 @@
 }
 .center {
   text-align: center;
+}
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+.inline {
+  display: inline-block;
+}
+.commentTitle {
+  color: #d9ead3;
+  background-color: #231010;
+  padding: 10px 15px 10px 10px;
+}
+.textRight {
+  text-align: right;
+  padding: 0px 10px 0px 0px;
+}
+.commentBorder {
+  border: 5px solid #231010;
+  margin-top: 10px;
+}
+.commentStyle {
+  margin: 10px;
+}
+.commentBtn {
+  margin: 10px 0px 10px 0px;
 }
